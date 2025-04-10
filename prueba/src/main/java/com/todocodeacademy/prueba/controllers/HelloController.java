@@ -185,4 +185,10 @@ public class HelloController {
         return promedioAltura;
     }
     
+    @GetMapping("/area-triangulo")
+    public double calcularAreaTriangulo(@RequestParam double base,
+                                        @RequestParam double altura){
+        return (base*altura)/2;
+    }
+    
 }
