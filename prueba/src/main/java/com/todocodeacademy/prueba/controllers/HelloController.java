@@ -10,6 +10,7 @@ import com.todocodeacademy.prueba.model.Paciente;
 import com.todocodeacademy.prueba.model.Plato;
 import com.todocodeacademy.prueba.model.Propiedad;
 import com.todocodeacademy.prueba.dto.PropiedadDTO;
+import com.todocodeacademy.prueba.model.Jugador;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
@@ -159,6 +160,29 @@ public class HelloController {
         dto.setDireccion(propiedad.getDireccion());
         
         return dto;
+    }
+    
+    @GetMapping("/promedio")
+    public String calcularPromedio(@RequestParam int nota1,
+                                   @RequestParam int nota2,
+                                   @RequestParam int nota3){
+        double promedio = (double)(nota1+nota2+nota3)/3;
+        return "Promedio: "+promedio;
+    }
+    
+    @PostMapping("/jugador")
+    public double guardarJugadores(@RequestBody ArrayList<Jugador> jugadores){
+        ArrayList<Jugador> listaJugadores = jugadores;
+        double sumaAltura = 0.0;
+        double promedioAltura;
+        
+        for(Jugador jugador : listaJugadores){
+            sumaAltura += jugador.getEstatura();
+        }
+        
+        promedioAltura = (sumaAltura)/(double)(listaJugadores.size());
+        
+        return promedioAltura;
     }
     
 }
