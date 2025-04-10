@@ -2,28 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.todocodeacademy.prueba;
+package com.todocodeacademy.prueba.model;
+
+import java.time.LocalDate;
 
 /**
  *
  * @author User
  */
-public class Inquilino {
+public class Paciente {
+    
     private Long id;
-    private Long dni;
     private String nombre;
     private String apellido;
-    private String profesion;
+    private LocalDate fechaDeNacimiento;
 
-    public Inquilino() {
+    public Paciente() {
     }
 
-    public Inquilino(Long id, Long dni, String nombre, String apellido, String profesion) {
+    public Paciente(Long id, String nombre, String apellido, LocalDate fechaDeNacimiento) {
         this.id = id;
-        this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.profesion = profesion;
+        this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
     public Long getId() {
@@ -32,14 +33,6 @@ public class Inquilino {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getDni() {
-        return dni;
-    }
-
-    public void setDni(Long dni) {
-        this.dni = dni;
     }
 
     public String getNombre() {
@@ -58,14 +51,14 @@ public class Inquilino {
         this.apellido = apellido;
     }
 
-    public String getProfesion() {
-        return profesion;
+    public LocalDate getFechaDeNacimiento() {
+        return fechaDeNacimiento;
     }
 
-    public void setProfesion(String profesion) {
-        this.profesion = profesion;
+    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
+        this.fechaDeNacimiento = fechaDeNacimiento;
     }
     
     
-          
+    
 }

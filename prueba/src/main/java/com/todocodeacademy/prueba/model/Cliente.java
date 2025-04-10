@@ -2,31 +2,32 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.todocodeacademy.prueba;
+package com.todocodeacademy.prueba.model;
 
-import java.time.LocalDate;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  *
  * @author User
  */
-public class Paciente {
-    
+@Getter @Setter
+public class Cliente {
     private Long id;
     private String nombre;
     private String apellido;
-    private LocalDate fechaDeNacimiento;
 
-    public Paciente() {
+    public Cliente() {
     }
 
-    public Paciente(Long id, String nombre, String apellido, LocalDate fechaDeNacimiento) {
+    public Cliente(Long id, String nombre, String apellido) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fechaDeNacimiento = fechaDeNacimiento;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -34,7 +35,7 @@ public class Paciente {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -50,14 +51,7 @@ public class Paciente {
     public void setApellido(String apellido) {
         this.apellido = apellido;
     }
-
-    public LocalDate getFechaDeNacimiento() {
-        return fechaDeNacimiento;
-    }
-
-    public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
-    }
+    
     
     
     

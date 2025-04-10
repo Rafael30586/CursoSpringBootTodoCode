@@ -4,12 +4,12 @@
  */
 package com.todocodeacademy.prueba.controllers;
 
-import com.todocodeacademy.prueba.Cliente;
-import com.todocodeacademy.prueba.Inquilino;
-import com.todocodeacademy.prueba.Paciente;
-import com.todocodeacademy.prueba.Plato;
-import com.todocodeacademy.prueba.Propiedad;
-import com.todocodeacademy.prueba.PropiedadDTO;
+import com.todocodeacademy.prueba.model.Cliente;
+import com.todocodeacademy.prueba.model.Inquilino;
+import com.todocodeacademy.prueba.model.Paciente;
+import com.todocodeacademy.prueba.model.Plato;
+import com.todocodeacademy.prueba.model.Propiedad;
+import com.todocodeacademy.prueba.dto.PropiedadDTO;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
