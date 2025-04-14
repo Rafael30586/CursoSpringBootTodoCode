@@ -60,4 +60,11 @@ public class PersonaController {
         return persona;
     }
     
+    @PutMapping("/personas/editar")
+    public Persona editPersona2(@RequestBody Persona persona){
+        service.editPersona(persona);
+        
+        return service.findPersona(persona.getId());
+    }
+    
 }
