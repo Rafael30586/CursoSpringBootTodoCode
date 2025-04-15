@@ -9,7 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import java.util.List;
 
 /**
  *
@@ -23,19 +25,18 @@ public class Persona {
     private String nombre;
     private String apellido;
     private int edad;
-    @OneToOne
-    @JoinColumn(name="una_mascota_id_mascota",referencedColumnName="id_mascota")
-    private Mascota unaMascota;
+    @OneToMany //Una persona tiene muchas mascotas
+    private List<Mascota> listaMascotas;
 
     public Persona() {
     }
 
-    public Persona(Long id, String nombre, String apellido, int edad, Mascota unaMascota) {
+    public Persona(Long id, String nombre, String apellido, int edad, List<Mascota> listaMascotas) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-        this.unaMascota = unaMascota;
+        this.listaMascotas = listaMascotas;
     }
 
     public Long getId() {
@@ -70,12 +71,12 @@ public class Persona {
         this.edad = edad;
     }
 
-    public Mascota getUnaMascota() {
-        return unaMascota;
+    public List<Mascota> getListaMascotas() {
+        return listaMascotas;
     }
 
-    public void setUnaMascota(Mascota unaMascota) {
-        this.unaMascota = unaMascota;
+    public void setListaMascotas(List<Mascota> listaMascotas) {
+        this.listaMascotas = listaMascotas;
     }
-    
+
 }
