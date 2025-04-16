@@ -4,6 +4,7 @@
  */
 package com.f_rafael.veterinaria.controller;
 
+import com.f_rafael.veterinaria.dto.MascotaDuenioDto;
 import com.f_rafael.veterinaria.model.Mascota;
 import com.f_rafael.veterinaria.service.IMascotaService;
 import java.util.List;
@@ -53,5 +54,12 @@ public class MascotaController {
         service.editar(mascota);
         return "La mascota se ha modificado correctamente";
     }
-    
+    @GetMapping("/mascota/perro/caniche")
+    public List<Mascota> listarCaniches(){
+        return service.encontrarCaniches();
+    }
+    @GetMapping("/mascota-y-duenio/{id}")
+    public MascotaDuenioDto MostrarMascotaYDuenio(@PathVariable Long id){
+        return service.devolverMascotaYDuenio(id);
+    }
 }

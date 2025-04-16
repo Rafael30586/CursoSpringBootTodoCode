@@ -5,7 +5,9 @@
 package com.f_rafael.veterinaria.repository;
 
 import com.f_rafael.veterinaria.model.Mascota;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -14,5 +16,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface IMascotaRepository extends JpaRepository<Mascota, Long>{
+    
+    @Query("SELECT m FROM Mascota m WHERE m.especie LIKE 'perro' AND m.raza LIKE 'caniche'")
+    public List<Mascota> econtrarCaniches();
     
 }

@@ -4,6 +4,7 @@
  */
 package com.f_rafael.veterinaria.service;
 
+import com.f_rafael.veterinaria.dto.MascotaDuenioDto;
 import com.f_rafael.veterinaria.model.Mascota;
 import java.util.List;
 
@@ -22,5 +23,9 @@ public interface IMascotaService {
     public void borrarPorId(Long id);
     
     public void editar(Mascota mascota);
+    
+    public List<Mascota> encontrarCaniches();
+    
+    public MascotaDuenioDto devolverMascotaYDuenio(Long id);
     
 }

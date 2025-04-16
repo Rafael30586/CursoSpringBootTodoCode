@@ -4,6 +4,8 @@
  */
 package com.f_rafael.veterinaria.service;
 
+import com.f_rafael.veterinaria.dto.MascotaDuenioDto;
+import com.f_rafael.veterinaria.model.Duenio;
 import com.f_rafael.veterinaria.model.Mascota;
 import com.f_rafael.veterinaria.repository.IMascotaRepository;
 import java.util.List;
@@ -43,6 +45,24 @@ public class MascotaService implements IMascotaService{
     @Override
     public void editar(Mascota mascota) {
         repository.save(mascota);
+    }
+
+    @Override
+    public List<Mascota> encontrarCaniches() {
+        return repository.econtrarCaniches();
+    }
+
+    @Override
+    public MascotaDuenioDto devolverMascotaYDuenio(Long id) {
+        Mascota mascota = repository.findById(id).get();
+        Duenio duenio = mascota.getDuenio();
+        MascotaDuenioDto dto = new MascotaDuenioDto();
+        dto.setNombre_mascota(mascota.getNombre());
+        dto.setEspecie(mascota.getEspecie());
+        dto.setRaza(mascota.getRaza());
+        dto.setNombre_duenio(duenio.getNombre());
+        dto.setApellido_duenio(duenio.getApellido());
+        return dto;
     }
     
 }
