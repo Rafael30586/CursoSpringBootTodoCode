@@ -18,7 +18,7 @@ public interface IDuenioService {
     
     public void guardar(Duenio duenio);
     
-    public List<Duenio> encotrarTodas();
+    public List<Duenio> encotrarTodos();
     
     public Duenio encontrarPorId(Long id);
     

@@ -27,7 +27,7 @@ public class DuenioService implements IDuenioService{
     }
 
     @Override
-    public List<Duenio> encotrarTodas() {
+    public List<Duenio> encotrarTodos() {
         return repository.findAll();
     }
 
