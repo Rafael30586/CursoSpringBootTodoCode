@@ -26,4 +26,6 @@ public interface VentaService {
     
     public Venta encontrarPorId(Long codigo_venta);
     
+    public List<Venta> encontrarPorDia(LocalDate dia);
+    
 }

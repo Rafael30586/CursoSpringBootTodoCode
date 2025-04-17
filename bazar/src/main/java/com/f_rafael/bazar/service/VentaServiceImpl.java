@@ -9,6 +9,7 @@ import com.f_rafael.bazar.model.Producto;
 import com.f_rafael.bazar.model.Venta;
 import com.f_rafael.bazar.repository.VentaRepository;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,18 @@ public class VentaServiceImpl implements VentaService{
         if(!unCliente.equals(null)) venta.setUnCliente(unCliente);
         
         repository.save(venta);
+    }
+
+    @Override
+    public List<Venta> encontrarPorDia(LocalDate dia) {
+        List<Venta> listaVentas = repository.findAll();
+        List<Venta> ventasPorDia = new ArrayList();
+        
+        for(Venta venta : listaVentas){
+            if(venta.getFecha_venta().equals(dia)) ventasPorDia.add(venta);
+        }
+        
+        return ventasPorDia;
     }
 
     

@@ -6,6 +6,7 @@ package com.f_rafael.bazar.controller;
 
 import com.f_rafael.bazar.model.Producto;
 import com.f_rafael.bazar.service.ProductoService;
+import com.f_rafael.bazar.service.VentaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,6 +25,8 @@ public class ProductoController {
     
     @Autowired
     private ProductoService service;
+    @Autowired
+    private VentaService ventaService;
     
     @PostMapping("/productos/crear")
     public void crear(@RequestBody Producto producto){
@@ -43,6 +46,15 @@ public class ProductoController {
     @DeleteMapping("/productos/eliminar/{id}")
     public void eliminar(@PathVariable Long id){
         service.borrarPorId(id);
+    }
+    @GetMapping("/productos/falta-stock")
+    public List<Producto> listarCantidadMenorQueCinco(){
+        return service.encontrarCantidadMenorQueCinco();
+    }
+    
+    @GetMapping("/producto/{codigo_venta}")
+    public List<Producto> listarPorVenta(@PathVariable Long codigo_venta){
+        return ventaService.encontrarPorId(codigo_venta).getListaProductos();
     }
     
 }

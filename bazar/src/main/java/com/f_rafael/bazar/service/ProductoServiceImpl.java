@@ -51,5 +51,10 @@ public class ProductoServiceImpl implements ProductoService{
         
         repository.save(producto);
     }
+
+    @Override
+    public List<Producto> encontrarCantidadMenorQueCinco() {
+        return repository.encontrarCantidadMenorQueCinco();
+    }
     
 }

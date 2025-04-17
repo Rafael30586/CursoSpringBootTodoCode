@@ -11,6 +11,7 @@ import com.f_rafael.bazar.service.VentaService;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,6 +55,10 @@ public class VentaController {
     @PutMapping("/editar/{codigo_venta}")
     public void editar(@PathVariable Long codigo_venta, @RequestBody Venta venta){
         service.editar(codigo_venta, venta.getFecha_venta(), venta.getTotal(), venta.getListaProductos(), venta.getUnCliente());
+    }
+    @GetMapping("/{fecha_venta}")
+    public List<Venta> listarPorDia(@PathVariable @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate fecha_venta){
+        return service.encontrarPorDia(fecha_venta);
     }
     
 }

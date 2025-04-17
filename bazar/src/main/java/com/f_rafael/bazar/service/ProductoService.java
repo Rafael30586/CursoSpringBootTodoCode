@@ -23,4 +23,6 @@ public interface ProductoService {
     
     public Producto encontrarPorId(Long id);
     
+    public List<Producto> encontrarCantidadMenorQueCinco();
+    
 }
