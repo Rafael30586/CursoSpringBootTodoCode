@@ -37,7 +37,7 @@ public class DuenioController {
     @PostMapping("/duenio")
     public String crear(@RequestBody Duenio duenio){
         service.guardar(duenio);
-        return "La mascota se ha creado correctamente";
+        return "El dueño se ha creado correctamente";
     }
     
     @GetMapping("/duenio/{id}")
@@ -48,13 +48,13 @@ public class DuenioController {
     @DeleteMapping("/duenio/{id}")
     public String borrar(@PathVariable Long id){
         service.borrarPorId(id);
-        return "La mascota se ha borrado correctamente";
+        return "El dueño se ha borrado correctamente";
     }
     
     @PutMapping("/duenio")
     public String modificar(@RequestBody Duenio duenio){
         service.editar(duenio);
-        return "La mascota se ha modificado correctamente";
+        return "El dueño se ha modificado correctamente";
     }
     
     
