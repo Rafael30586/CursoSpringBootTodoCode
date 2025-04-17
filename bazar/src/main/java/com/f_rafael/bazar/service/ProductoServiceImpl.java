@@ -4,6 +4,10 @@
  */
 package com.f_rafael.bazar.service;
 
+import com.f_rafael.bazar.model.Producto;
+import com.f_rafael.bazar.repository.ProductoRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,5 +16,40 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ProductoServiceImpl implements ProductoService{
+    
+    @Autowired
+    private ProductoRepository repository;
+
+    @Override
+    public void guardar(Producto producto) {
+        repository.save(producto);
+    }
+
+    @Override
+    public List<Producto> encontrarTodos() {
+        return repository.findAll();
+    }
+
+    @Override
+    public void borrarPorId(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public Producto encontrarPorId(Long id) {
+        return repository.findById(id).get();
+    }
+
+    @Override
+    public void editar(Long codigo_producto, String nombre, String marca, Double costo, Double cantidad_disponible) {
+        Producto producto = repository.findById(codigo_producto).get();
+        
+        if(!nombre.equals(null)) producto.setNombre(nombre);
+        if(!marca.equals(null)) producto.setMarca(marca);
+        if(!costo.equals(null)) producto.setCosto(costo);
+        if(!cantidad_disponible.equals(null)) producto.setCantidad_disponible(cantidad_disponible);
+        
+        repository.save(producto);
+    }
     
 }

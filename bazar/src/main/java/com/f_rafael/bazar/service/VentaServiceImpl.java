@@ -4,6 +4,13 @@
  */
 package com.f_rafael.bazar.service;
 
+import com.f_rafael.bazar.model.Cliente;
+import com.f_rafael.bazar.model.Producto;
+import com.f_rafael.bazar.model.Venta;
+import com.f_rafael.bazar.repository.VentaRepository;
+import java.time.LocalDate;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,5 +19,41 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class VentaServiceImpl implements VentaService{
+    
+    @Autowired
+    private VentaRepository repository;
+
+    @Override
+    public void guardar(Venta venta) {
+        repository.save(venta);
+    }
+
+    @Override
+    public List<Venta> encontrarTodas() {
+        return repository.findAll();
+    }
+
+    @Override
+    public void borrarPorId(Long id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public Venta encontrarPorId(Long id) {
+        return repository.findById(id).get();
+    }
+
+    @Override
+    public void editar(Long codigo_venta, LocalDate fecha_venta, Double total, List<Producto> listaProductos, Cliente unCliente) {
+        Venta venta = repository.findById(codigo_venta).get();
+        
+        if(!fecha_venta.equals(null)) venta.setFecha_venta(fecha_venta);
+        if(!total.equals(null)) venta.setTotal(total);
+        if(!listaProductos.equals(null)) venta.setListaProductos(listaProductos);
+        if(!unCliente.equals(null)) venta.setUnCliente(unCliente);
+        
+        repository.save(venta);
+    }
+
     
 }

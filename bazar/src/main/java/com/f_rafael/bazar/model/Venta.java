@@ -4,6 +4,7 @@
  */
 package com.f_rafael.bazar.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Venta {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     Long codigo_venta;
+    @JsonFormat(pattern = "dd-MM-yyyy")
     LocalDate fecha_venta;
     Double total;
     @ManyToMany
