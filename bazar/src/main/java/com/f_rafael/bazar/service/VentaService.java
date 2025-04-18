@@ -4,6 +4,7 @@
  */
 package com.f_rafael.bazar.service;
 
+import com.f_rafael.bazar.dto.MayorVentaDto;
 import com.f_rafael.bazar.model.Cliente;
 import com.f_rafael.bazar.model.Producto;
 import com.f_rafael.bazar.model.Venta;
@@ -27,5 +28,7 @@ public interface VentaService {
     public Venta encontrarPorId(Long codigo_venta);
     
     public List<Venta> encontrarPorDia(LocalDate dia);
+    
+    public MayorVentaDto encontrarMayorVenta();
     
 }

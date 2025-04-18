@@ -4,6 +4,7 @@
  */
 package com.f_rafael.bazar.service;
 
+import com.f_rafael.bazar.dto.MayorVentaDto;
 import com.f_rafael.bazar.model.Cliente;
 import com.f_rafael.bazar.model.Producto;
 import com.f_rafael.bazar.model.Venta;
@@ -67,6 +68,28 @@ public class VentaServiceImpl implements VentaService{
         
         return ventasPorDia;
     }
+
+    @Override
+    public MayorVentaDto encontrarMayorVenta() {
+        List<Venta> listaVentas = repository.findAll();
+        Double mayorTotalVenta = 0.0;
+        Venta mayorVenta = null;
+        MayorVentaDto mayorVentaDto;
+        
+        for(Venta venta : listaVentas){
+            if(venta.getTotal()>=mayorTotalVenta) mayorVenta = venta; 
+        }
+        
+        mayorVentaDto = new MayorVentaDto(mayorVenta.getCodigo_venta(),
+                                          mayorVenta.getTotal(),
+                                          mayorVenta.getListaProductos().size(), 
+                                          mayorVenta.getUnCliente().getNombre(),
+                                          mayorVenta.getUnCliente().getApellido());
+        
+        return mayorVentaDto;
+    }
+    
+    
 
     
 }

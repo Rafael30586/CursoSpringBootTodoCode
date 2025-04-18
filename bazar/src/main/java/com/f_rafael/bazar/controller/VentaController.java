@@ -4,6 +4,7 @@
  */
 package com.f_rafael.bazar.controller;
 
+import com.f_rafael.bazar.dto.MayorVentaDto;
 import com.f_rafael.bazar.model.Cliente;
 import com.f_rafael.bazar.model.Venta;
 import com.f_rafael.bazar.service.ClienteService;
@@ -56,9 +57,13 @@ public class VentaController {
     public void editar(@PathVariable Long codigo_venta, @RequestBody Venta venta){
         service.editar(codigo_venta, venta.getFecha_venta(), venta.getTotal(), venta.getListaProductos(), venta.getUnCliente());
     }
-    @GetMapping("/{fecha_venta}")
+    @GetMapping("/por-fecha/{fecha_venta}")
     public List<Venta> listarPorDia(@PathVariable @DateTimeFormat(pattern="dd-MM-yyyy") LocalDate fecha_venta){
         return service.encontrarPorDia(fecha_venta);
+    }
+    @GetMapping("/mayor-venta")
+    public MayorVentaDto mostrarMayorVenta(){
+        return service.encontrarMayorVenta();
     }
     
 }

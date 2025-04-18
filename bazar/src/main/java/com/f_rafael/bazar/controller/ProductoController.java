@@ -52,7 +52,7 @@ public class ProductoController {
         return service.encontrarCantidadMenorQueCinco();
     }
     
-    @GetMapping("/producto/{codigo_venta}")
+    @GetMapping("/productos/lista-por-venta/{codigo_venta}")
     public List<Producto> listarPorVenta(@PathVariable Long codigo_venta){
         return ventaService.encontrarPorId(codigo_venta).getListaProductos();
     }
