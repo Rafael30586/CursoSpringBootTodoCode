@@ -49,10 +49,10 @@ public class VentaServiceImpl implements VentaService{
     public void editar(Long codigo_venta, LocalDate fecha_venta, Double total, List<Producto> listaProductos, Cliente unCliente) {
         Venta venta = repository.findById(codigo_venta).get();
         
-        if(!fecha_venta.equals(null)) venta.setFecha_venta(fecha_venta);
-        if(!total.equals(null)) venta.setTotal(total);
-        if(!listaProductos.equals(null)) venta.setListaProductos(listaProductos);
-        if(!unCliente.equals(null)) venta.setUnCliente(unCliente);
+        if(fecha_venta!=null) venta.setFecha_venta(fecha_venta);
+        if(total!=null) venta.setTotal(total);
+        if(listaProductos!=null) venta.setListaProductos(listaProductos);
+        if(unCliente!=null) venta.setUnCliente(unCliente);
         
         repository.save(venta);
     }

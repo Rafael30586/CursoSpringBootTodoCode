@@ -44,10 +44,10 @@ public class ProductoServiceImpl implements ProductoService{
     public void editar(Long codigo_producto, String nombre, String marca, Double costo, Double cantidad_disponible) {
         Producto producto = repository.findById(codigo_producto).get();
         
-        if(!nombre.equals(null)) producto.setNombre(nombre);
-        if(!marca.equals(null)) producto.setMarca(marca);
-        if(!costo.equals(null)) producto.setCosto(costo);
-        if(!cantidad_disponible.equals(null)) producto.setCantidad_disponible(cantidad_disponible);
+        if(nombre!=null) producto.setNombre(nombre);
+        if(marca!=null) producto.setMarca(marca);
+        if(costo!=null) producto.setCosto(costo);
+        if(cantidad_disponible!=null) producto.setCantidad_disponible(cantidad_disponible);
         
         repository.save(producto);
     }
